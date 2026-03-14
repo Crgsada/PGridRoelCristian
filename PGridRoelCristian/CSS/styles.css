@@ -1,0 +1,186 @@
+/* Definición de variables globales para la paleta de colores del tema hacker/neón */
+:root {
+  --bordes: #7DF9FF; /*azul laser para bordes*/
+  --fondo: #050514;
+  --body: #050514;
+  --cards:#141424;
+  --texto:#a5a6a7;
+  --titulos:#8B9BB4;
+  --links:#00FFFF;
+  --cuerpo:#0D0D1A;
+} 
+
+/* Estilo general para el cuerpo de la página, aplicando el color de fondo base */
+body{
+    background-color: var(--body);
+}
+
+/* Color por defecto para los textos de párrafos y elementos de lista */
+p, li{
+    color: var(--texto);
+}
+
+/* Estilos básicos para los enlaces: color, sin subrayado y para que ocupen todo su contenedor */
+a{
+    color: var(--titulos);
+    text-decoration: none;
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
+}
+
+/* Tipografía de terminal (Courier) y efecto de resplandor neón para encabezados y enlaces */
+h1, h2 ,h3, a {
+    color: var(--links);
+    font-family: 'Courier New', Courier, monospace;
+     text-shadow: 
+        0 0 8px rgba(0, 255, 255, 0.3),
+        0 0 20px rgba(0, 255, 255, 0.2),
+        0 0 45px rgba(0, 255, 255, 0.1);
+}
+footer{
+    display: flex;
+    color: white;
+    justify-content: center;
+}
+
+/* Estilos específicos para el título principal */
+h1{
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Contenedor principal Grid */
+.principal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 30% 40% 30%;
+    grid-template-areas:
+    "fila1 fila1 fila1 fila2"
+    "fila3 fila4 fila4 fila4"
+    "fila5 fila6 fila6 fila7";
+    height: 85vh;
+    gap: 10px;
+    padding: 3%;
+    background-color: var(--cuerpo);
+    padding-top: 0px;
+}
+
+/* Elimina márgenes de figure */
+figure {
+    margin: 0;
+}
+
+/* Imágenes dentro de figure nesting*/
+figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 18px;
+}
+
+/* Estilos compartidos para todas las tarjetas */
+.fila1, .fila2, .fila3, .fila4, .fila5, .fila6, .fila7{
+    background-color: var(--cards);
+    border: var(--bordes) 2px solid;
+    border-radius: 12px;
+    display: flex;
+    padding: 3%;
+}
+
+/* Efecto hover general */
+[class^="fila"]:hover{
+    box-shadow: 
+        0 0 7px #fff,
+        0 0 10px var(--links),
+        0 0 21px var(--links),
+        0 0 42px var(--links);
+}
+
+/* FILA 1 */
+.fila1{
+    grid-area: fila1;
+    flex-direction: column;
+}
+
+/* FILA 2 */
+.fila2{
+    grid-area: fila2;
+    padding: 0%;
+}
+
+/* FILA 3 */
+.fila3{
+    grid-area: fila3;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* FILA 4 */
+.fila4{
+    grid-area: fila4;
+    justify-content: space-between;
+    flex-direction: row;
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+}
+
+/* FILA 5 */
+.fila5{
+    grid-area: fila5;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* FILA 6 */
+.fila6{
+    grid-area: fila6;
+    padding: 0%;
+}
+
+/* FILA 7 */
+.fila7{
+  grid-area: fila7;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+  gap:10px;
+  margin:0%;
+}
+
+/* Elementos dentro de fila7  nesting*/
+.fila7 h2,
+.fila7 p,
+.fila7 ul {
+    margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    
+    .principal {
+        padding: 2%;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+        grid-template-areas:
+            "fila1"
+            "fila2"
+            "fila3"
+            "fila4"
+            "fila5"
+            "fila6"
+            "fila7";
+    }
+
+    .fila4 {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .fila2, .fila6 {
+        min-height: 250px; 
+    }
+}
